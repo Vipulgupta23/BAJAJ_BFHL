@@ -5,7 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "check": "node --check src/index.js && node --check src/routes/bfhl.js && node --check src/lib/identity.js && node --check src/lib/validator.js && node --check src/lib/graph.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "bfhl",
