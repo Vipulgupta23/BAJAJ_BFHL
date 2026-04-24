@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFHL Node Parser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav id="topbar">
+    <span class="site-name">bfhl / node-parser</span>
+  </nav>
+
+  <div class="container">
+
+    <div class="input-box">
+      <label for="edges-input">Paste your edges here</label>
+      <textarea id="edges-input" rows="7" spellcheck="false" placeholder="A->B, A->C, B->D ...">A->B, A->C, B->D, C->E, E->F
+X->Y, Y->Z, Z->X
+P->Q, Q->R
+G->H, G->H, G->I
+hello, 1->2, A-></textarea>
+      <div class="btn-row">
+        <button id="clear-btn" type="button">Clear</button>
+        <button id="run-btn" type="button">Run</button>
+      </div>
+    </div>
+
+    <div id="err-msg" class="err-msg" style="display:none;"></div>
+
+    <div id="results" style="display:none;">
+
+      <div id="user-info" class="user-info"></div>
+
+      <div id="stats-row" class="stats-row"></div>
+
+      <h3>Trees & Cycles</h3>
+      <div id="tree-cards" class="tree-cards"></div>
+
+      <div id="invalid-wrap" style="display:none;">
+        <h3>Invalid Entries</h3>
+        <div id="invalid-tags" class="tags"></div>
+      </div>
+
+      <div id="dup-wrap" style="display:none;">
+        <h3>Duplicates</h3>
+        <div id="dup-tags" class="tags"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

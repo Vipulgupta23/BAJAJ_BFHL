@@ -1,0 +1,329 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #111827;
+  color: #d1d5db;
+  min-height: 100vh;
+}
+
+#topbar {
+  background: #1f2937;
+  padding: 12px 24px;
+  border-bottom: 1px solid #374151;
+}
+
+.site-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9ca3af;
+  font-family: "SF Mono", "Consolas", "Monaco", monospace;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* input area */
+.input-box {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.input-box label {
+  display: block;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+textarea {
+  width: 100%;
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  padding: 12px;
+  font-family: "SF Mono", "Consolas", "Monaco", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #6366f1;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #374151;
+  transition: background 0.15s;
+}
+
+#run-btn {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+}
+
+#run-btn:hover {
+  background: #4f46e5;
+}
+
+#run-btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+#clear-btn {
+  background: transparent;
+  color: #9ca3af;
+}
+
+#clear-btn:hover {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+/* error message */
+.err-msg {
+  background: #7f1d1d;
+  color: #fca5a5;
+  border: 1px solid #991b1b;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+/* results */
+#results {
+  margin-top: 28px;
+}
+
+/* user info row */
+.user-info {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.user-info .info-piece {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-info .info-label {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-info .info-val {
+  font-family: "SF Mono", "Consolas", monospace;
+  color: #a5b4fc;
+  font-size: 13px;
+}
+
+/* stats */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "SF Mono", "Consolas", monospace;
+}
+
+.stat-num.green { color: #34d399; }
+.stat-num.red { color: #f87171; }
+.stat-num.blue { color: #a5b4fc; }
+
+.stat-txt {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+/* tree cards */
+.tree-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tcard {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.tcard.is-cycle {
+  border-color: #991b1b;
+}
+
+.tcard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tcard-root {
+  font-family: "SF Mono", "Consolas", monospace;
+  font-weight: 600;
+  font-size: 14px;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.is-cycle .tcard-root {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.badge {
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badge-depth {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.badge-cycle {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* tree viz */
+.tree-viz {
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.t-root {
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
+.t-branch {
+  padding-left: 16px;
+  border-left: 1px solid #374151;
+  margin-left: 4px;
+}
+
+.t-node {
+  color: #d1d5db;
+  padding: 1px 0;
+}
+
+.t-node::before {
+  content: "— ";
+  color: #4b5563;
+}
+
+.t-leaf {
+  color: #6b7280;
+}
+
+.cycle-msg {
+  color: #6b7280;
+  font-size: 12px;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+/* tags for invalid / duplicates */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.tag-invalid {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.tag-dup {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+@media (max-width: 640px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+  .tree-cards {
+    grid-template-columns: 1fr;
+  }
+}
